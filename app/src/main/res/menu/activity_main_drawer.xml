@@ -13,5 +13,10 @@
             android:icon="@drawable/ic_baseline_brightness_7_24"
             android:title="@string/menu_light" />
 
+        <item
+            android:id="@+id/snake"
+            android:icon="@drawable/game"
+            android:title="@string/menu_snake" />
+
     </group>
 </menu>

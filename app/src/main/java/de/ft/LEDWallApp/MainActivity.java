@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setBackgroundColor(Color.RED);
         toolbar.setSubtitle("Nicht Verbunden");
         getWindow().setStatusBarColor(Color.RED);
-        
+
 
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setSubtitle("Nicht Verbunden");
                     getWindow().setStatusBarColor(Color.RED);
                 }
-                setSupportActionBar(toolbar);
+               
             }
 
         });

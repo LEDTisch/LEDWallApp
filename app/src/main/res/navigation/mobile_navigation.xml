@@ -16,4 +16,9 @@
         android:name="de.ft.LEDWallApp.ui.light.Licht"
         android:label="@string/menu_light"
         tools:layout="@layout/licht_fragment" />
+    <fragment
+        android:id="@+id/snake"
+        android:name="de.ft.LEDWallApp.ui.snake.Snake"
+        android:label="snake_fragment"
+        tools:layout="@layout/snake_fragment" />
 </navigation>
