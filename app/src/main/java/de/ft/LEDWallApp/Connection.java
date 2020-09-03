@@ -4,10 +4,17 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Connection {
     public static PrintWriter printwriter = null;
+    public static boolean sending=false;
 
+    public static ArrayList<String>tosent=new ArrayList<>();
+
+    public static Timer timer = new Timer();
 
     public static void connect(final String IP, final int port) throws IOException {
         Thread thread = new Thread(){
@@ -23,19 +30,24 @@ public class Connection {
             }
         };
         thread.start();
-    }
-    public static void send(final String s){
-        while(printwriter==null);
-        Thread thread = new Thread() {
+
+        timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                try {
-                    printwriter.println(s);
+                while(printwriter==null);
+                if(tosent.size()>0) {
+                    printwriter.println(tosent.get(tosent.size() - 1));
+                    tosent.remove(tosent.get(tosent.size() - 1));
                     printwriter.flush();
-                }catch (Exception e){}
+                }
             }
-        };
-        thread.start();
+        },0,10);
+
 
     }
+    public static void send(final String s){
+tosent.add(0,s);
+
+    }
+
 }
