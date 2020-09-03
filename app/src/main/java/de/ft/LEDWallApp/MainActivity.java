@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             if(port > 0) {
-                Connection.connect("192.168.137.53", port);
-                Connection.send("Hallo ESP");
+                Connection.connect("192.168.137.52", port);
+                Connection.send("ClientConnected");
             }
         } catch (Throwable e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 Log.d("Switched to: ", (String) destination.getLabel());
-                Connection.send("switchTo:" + (String) destination.getLabel());
+                Connection.send("switchTo:" + (String) destination.getLabel() + "#");
             }
         });
 
