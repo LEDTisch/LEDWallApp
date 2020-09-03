@@ -30,6 +30,7 @@ public class Connection {
                     socket = new Socket(IP, port);
                     printwriter =  new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
                     instace.setConnectbuttontext("Trennen");
+                    instace.setConnected(true);
                 } catch (Throwable e) {
 
 
@@ -39,6 +40,8 @@ public class Connection {
                      e.printStackTrace();
 
                     instace.setConnectbuttontext("Verbinden");
+                    instace.setConnected(false);
+
                 }
 
             }
@@ -57,6 +60,7 @@ public class Connection {
                     }
                 }catch (Exception e)  {
                     instace.setConnectbuttontext("Verbinden");
+                    instace.setConnected(false);
 
                     postToastMessage("Fehler beim Senden",instace);
 
@@ -80,6 +84,7 @@ tosent.add(0,s);
     public static void end() {
         try {
             socket.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
