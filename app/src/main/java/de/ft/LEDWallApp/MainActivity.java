@@ -96,8 +96,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 Log.d("Switched to: ", (String) destination.getLabel());
-                Connection.send("switchTo:");
-                Connection.send((String) destination.getLabel());
+                Connection.send("switchTo:" + (String) destination.getLabel());
             }
         });
 
