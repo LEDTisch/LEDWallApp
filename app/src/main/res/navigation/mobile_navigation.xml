@@ -10,15 +10,15 @@
         android:name="de.ft.LEDWallApp.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
-
     <fragment
         android:id="@+id/licht"
         android:name="de.ft.LEDWallApp.ui.light.Licht"
-        android:label="@string/menu_light"
+        android:label="licht_fragment"
         tools:layout="@layout/licht_fragment" />
     <fragment
         android:id="@+id/snake"
         android:name="de.ft.LEDWallApp.ui.snake.Snake"
-        android:label="snake_fragment"
+        android:label="snake"
         tools:layout="@layout/snake_fragment" />
+
 </navigation>

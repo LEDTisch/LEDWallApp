@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setSubtitle("Nicht Verbunden");
                     getWindow().setStatusBarColor(Color.RED);
                 }
-               
+
             }
 
         });
