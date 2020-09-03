@@ -38,8 +38,8 @@ import java.util.zip.Inflater;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private MainActivity instace = this;
-
+    public MainActivity instace = this;
+public static Button connectbutton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,21 +48,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String ip  =  sharedPreferences.getString("ipadressenfeldkey","");
-        int port = Integer.parseInt(sharedPreferences.getString("portkey", "0"));
 
 
 
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        try {
-            if(port > 0) {
-                Connection.connect("192.168.137.52", port);
-                Connection.send("ClientConnected");
-            }
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
+
 
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -83,6 +74,35 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
+        connectbutton = navigationView.getHeaderView(0).findViewById(R.id.connect);
+
+        connectbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (connectbutton.getText().toString().contentEquals("Verbinden")) {
+                    final String ip  =  sharedPreferences.getString("ipadressenfeldkey","");
+                    final int port = Integer.parseInt(sharedPreferences.getString("portkey", "0"));
+                    try {
+                        if (port > 0) {
+                            Connection.connect(ip, port,instace);
+                            Connection.send("ClientConnected");
+                            connectbutton.setEnabled(false);
+
+                        }
+                    } catch (Throwable e) {
+                        connectbutton.setText("Verbinden");
+                        connectbutton.setEnabled(true);
+                    }
+
+                }else{
+
+                    Connection.end();
+
+                    connectbutton.setText("Verbinden");
+                    connectbutton.setEnabled(true);
+                }
+            }
+        });
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.licht)
@@ -91,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
 
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
@@ -121,6 +142,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+    public  void setConnectbuttontext(final String text){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                connectbutton.setText(text);
+                connectbutton.setEnabled(true);
+            }
+        });
+
 
     }
 }
