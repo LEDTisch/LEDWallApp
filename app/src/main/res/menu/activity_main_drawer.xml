@@ -17,6 +17,10 @@
             android:id="@+id/snake"
             android:icon="@drawable/game"
             android:title="@string/menu_snake" />
+        <item
+            android:id="@+id/tetris"
+            android:icon="@drawable/game"
+            android:title="@string/menu_tetris" />
 
     </group>
 </menu>

@@ -20,5 +20,10 @@
         android:name="de.ft.LEDWallApp.ui.snake.Snake"
         android:label="Snake"
         tools:layout="@layout/snake_fragment" />
+    <fragment
+        android:id="@+id/tetris"
+        android:name="de.ft.LEDWallApp.ui.tetris.Tetris"
+        android:label="Tetris"
+        tools:layout="@layout/tetris_fragment" />
 
 </navigation>
