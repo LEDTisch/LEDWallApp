@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +30,11 @@ public class Snake extends Fragment {
 
 
         View view =  inflater.inflate(R.layout.snake_fragment, container, false);
-        Button hoch = view.findViewById(R.id.hoch);
-        Button runter = view.findViewById(R.id.runter);
-        Button links = view.findViewById(R.id.links);
+        Button hoch = view.findViewById(R.id.drehen);
+        Button runter = view.findViewById(R.id.links);
+        Button links = view.findViewById(R.id.runter);
         Button rechts = view.findViewById(R.id.rechts);
+
         hoch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
