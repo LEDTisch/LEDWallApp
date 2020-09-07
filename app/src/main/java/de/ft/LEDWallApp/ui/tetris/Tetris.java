@@ -31,6 +31,45 @@ public class Tetris extends Fragment {
 
         View view =  inflater.inflate(R.layout.tetris_fragment, container, false);
 
+        Button rechts= view.findViewById(R.id.rechts);
+        Button links= view.findViewById(R.id.links);
+        Button drehen= view.findViewById(R.id.drehen);
+        Button runter= view.findViewById(R.id.runter);
+        Button neuesspiel= view.findViewById(R.id.neuesspiel);
+
+        rechts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Connection.send("r");
+            }
+        });
+        links.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Connection.send("l");
+            }
+        });
+        drehen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Connection.send("t");
+            }
+        });
+        runter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Connection.send("d");
+            }
+        });
+        neuesspiel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Connection.send("n");
+            }
+        });
+
+
+
 
 
 
