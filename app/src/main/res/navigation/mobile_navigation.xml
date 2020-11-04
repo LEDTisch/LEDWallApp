@@ -32,4 +32,10 @@
         android:label="@string/menu_racinggame"
         tools:layout="@layout/racing_game_fragment" />
 
+    <fragment
+        android:id="@+id/flappybird"
+        android:name="de.ft.LEDWallApp.ui.flappybird.FlappyBird"
+        android:label="@string/menu_flappybird"
+        tools:layout="@layout/flappy_bird_fragment" />
+
 </navigation>
