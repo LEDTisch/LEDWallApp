@@ -143,7 +143,7 @@ public class Tetris extends Fragment implements View.OnTouchListener, GestureDet
             }
             System.out.println("Xfling: "+ velocityX);
         }else{
-            if(velocityY>=0){
+            if(velocityY>=10){
                 Connection.send("d");
             }else{
             }

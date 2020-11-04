@@ -9,77 +9,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#3A1400"
+        android:background="#4C4C4C"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
-        tools:context=".MainActivity">
-
-        <Button
-            android:id="@+id/runter"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="#FF0220"
-            android:text="Links"
-            app:layout_constraintBottom_toTopOf="@+id/rechts"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/drehen"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="#FF0220"
-            android:text="Hoch"
-            android:visibility="visible"
-            app:layout_constraintStart_toEndOf="@+id/links"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/rechts"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="#FF0220"
-            android:text="REchts"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/links"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="#FF0220"
-            android:text="Runter"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        tools:context=".MainActivity" />
 </FrameLayout>
