@@ -33,6 +33,7 @@ public class RacingGame extends Fragment {
 
         Button left = view.findViewById(R.id.left);
         Button right = view.findViewById(R.id.right);
+        Button newgame = view.findViewById(R.id.newgame);
 
         left.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +52,13 @@ public class RacingGame extends Fragment {
                 Connection.send("r");
 
 
+            }
+        });
+
+        newgame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Connection.send("n");
             }
         });
 
