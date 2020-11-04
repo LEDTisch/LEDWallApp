@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -55,12 +56,25 @@ public class Tetris extends Fragment {
                 Connection.send("t");
             }
         });
-        runter.setOnClickListener(new View.OnClickListener() {
+        runter.setOnTouchListener(new View.OnTouchListener() {
+
             @Override
-            public void onClick(View v) {
-                Connection.send("d");
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+
+                    case MotionEvent.ACTION_DOWN:
+                        Connection.send("d");
+                        // PRESSED
+                        return true; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        Connection.send("?");
+                        // RELEASED
+                        return true; // if you want to handle the touch event
+                }
+                return false;
             }
         });
+
         neuesspiel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
