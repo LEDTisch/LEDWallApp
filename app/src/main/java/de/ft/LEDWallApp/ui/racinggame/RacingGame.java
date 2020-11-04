@@ -30,15 +30,15 @@ public class RacingGame extends Fragment {
 
 
         View view = inflater.inflate(R.layout.racing_game_fragment, container, false);
-/*
-        Button left = view.findViewById(R.id.links);
-        Button right = view.findViewById(R.id.rechts);
+
+        Button left = view.findViewById(R.id.left);
+        Button right = view.findViewById(R.id.right);
 
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-             //   Connection.send();
+                Connection.send("l");
 
             }
         });
@@ -47,14 +47,14 @@ public class RacingGame extends Fragment {
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
-               // Connection.send();
+
+                Connection.send("r");
 
 
             }
         });
-        
- */
+
+
 
 
         return view;
