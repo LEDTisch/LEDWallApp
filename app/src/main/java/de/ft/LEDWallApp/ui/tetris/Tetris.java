@@ -1,5 +1,6 @@
 package de.ft.LEDWallApp.ui.tetris;
 
+import androidx.core.view.GestureDetectorCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,10 +19,10 @@ import android.widget.Button;
 import de.ft.LEDWallApp.Connection;
 import de.ft.LEDWallApp.R;
 
-public class Tetris extends Fragment {
+public class Tetris extends Fragment implements View.OnTouchListener, GestureDetector.OnGestureListener {
 
     private TetrisViewModel mViewModel;
-
+    private GestureDetectorCompat mGestureDetector;
     public static Tetris newInstance() {
         return new Tetris();
     }
@@ -37,7 +39,9 @@ public class Tetris extends Fragment {
         Button drehen= view.findViewById(R.id.drehen);
         Button runter= view.findViewById(R.id.runter);
         Button neuesspiel= view.findViewById(R.id.neuesspiel);
+        view.setOnTouchListener(this);
 
+        mGestureDetector = new GestureDetectorCompat(view.getContext(),this);
         rechts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,4 +100,40 @@ public class Tetris extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        mGestureDetector.onTouchEvent(event);
+        return true;
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        System.out.println("FINGasdfasdfasdfasdfasdf");
+        return false;
+    }
 }
