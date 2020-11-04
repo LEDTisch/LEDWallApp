@@ -4,13 +4,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
     public MainActivity instace = this;
     public static Button connectbutton;
     Toolbar toolbar;
+    public static int brightness = 5;
+    private Snackbar bar;
+
+
+    private final Handler handler = new Handler();
+    private final Runnable dismis = new Runnable() {
+        @Override
+        public void run() {
+            bar.dismiss();
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setSubtitle("Nicht Verbunden");
         getWindow().setStatusBarColor(Color.RED);
 
-
-
+        bar = Snackbar.make(getWindow().getDecorView(), "", Snackbar.LENGTH_INDEFINITE);
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
 
@@ -71,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (connectbutton.getText().toString().contentEquals("Verbinden")) {
 
-                   connect();
+                    connect();
 
                 } else {
 
@@ -85,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.licht,R.id.snake, R.id.tetris,R.id.racinggame,R.id.flappybird)
+                R.id.nav_home, R.id.licht, R.id.snake, R.id.tetris, R.id.racinggame, R.id.flappybird)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -136,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void connect(){
+    public void connect() {
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         final String ip = sharedPreferences.getString("ipadressenfeldkey", "");
@@ -175,5 +190,48 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+
+            if (brightness > 0) {
+                brightness--;
+            }
+            Connection.send("brightness:"+brightness+"#");
+
+            bar.setText("Helligkeit: " + (brightness));
+            if (!bar.isShown())
+                bar.show();
+            handler.removeCallbacks(dismis);
+            handler.postDelayed(dismis, 1500);
+
+            return true;
+        }
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+
+
+            if (brightness < 10) {
+                brightness++;
+            }
+            Connection.send("brightness:"+brightness+"#");
+
+            bar.setText("Helligkeit: " + (brightness));
+            if (!bar.isShown())
+                bar.show();
+            handler.removeCallbacks(dismis);
+            handler.postDelayed(dismis, 1500);
+
+
+            return true;
+        }
+
+        return false;
+
+        //return super.onKeyDown(keyCode, event);
+    }
+
+
 
 }
