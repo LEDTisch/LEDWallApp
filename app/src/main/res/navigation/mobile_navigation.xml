@@ -26,4 +26,10 @@
         android:label="Tetris"
         tools:layout="@layout/tetris_fragment" />
 
+    <fragment
+        android:id="@+id/racinggame"
+        android:name="de.ft.LEDWallApp.ui.racinggame.RacingGame"
+        android:label="@string/menu_racinggame"
+        tools:layout="@layout/racing_game_fragment" />
+
 </navigation>
