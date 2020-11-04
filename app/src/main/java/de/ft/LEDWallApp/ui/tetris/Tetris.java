@@ -122,19 +122,32 @@ public class Tetris extends Fragment implements View.OnTouchListener, GestureDet
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        int multi=1;
+        float diff=Math.abs(e2.getX()-e1.getX());
+        System.out.print(diff);
         if(Math.abs(velocityX)>=Math.abs(velocityY)){
-            if(velocityX>=0){
-                Connection.send("r");
-            }else{
-                Connection.send("l");
+            if(diff>500){
+                multi=2;
             }
-            System.out.println("Yfling");
+            if(diff>600 && velocityX>10000){
+                multi=3;
+            }
+            if(velocityX>=0){
+                for(int i=0;i<multi;i++) {
+                    Connection.send("r");
+                }
+            }else{
+                for(int i=0;i<multi;i++) {
+                    Connection.send("l");
+                }
+            }
+            System.out.println("Xfling: "+ velocityX);
         }else{
             if(velocityY>=0){
                 Connection.send("d");
             }else{
             }
-            System.out.println("Xfling");
+            System.out.println("Yfling: "+velocityY);
         }
         return false;
     }
