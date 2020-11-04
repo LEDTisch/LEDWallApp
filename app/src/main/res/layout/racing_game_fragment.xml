@@ -14,8 +14,8 @@
 
         <Button
             android:id="@+id/left"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
             android:layout_marginEnd="50dp"
             android:text="l"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -26,8 +26,8 @@
 
         <Button
             android:id="@+id/right"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
             android:text="r"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
