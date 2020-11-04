@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.RED);
 
 
-        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -72,20 +71,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (connectbutton.getText().toString().contentEquals("Verbinden")) {
 
-                    final String ip = sharedPreferences.getString("ipadressenfeldkey", "");
-                    final int port = Integer.parseInt(sharedPreferences.getString("portkey", "0"));
-                    try {
-                        if (port > 0) {
-                            Connection.connect(ip, port, instace);
-                            Connection.send("ClientConnected");
-                            connectbutton.setEnabled(false);
-
-                        }
-                    } catch (Throwable e) {
-                        connectbutton.setText("Verbinden");
-                        setConnected(false);
-                        connectbutton.setEnabled(true);
-                    }
+                   connect();
 
                 } else {
 
@@ -114,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 Connection.send("switchTo:" + (String) destination.getLabel() + "#");
             }
         });
-
+        connect();
     }
 
     @Override
@@ -148,6 +134,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void connect(){
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        final String ip = sharedPreferences.getString("ipadressenfeldkey", "");
+        final int port = Integer.parseInt(sharedPreferences.getString("portkey", "0"));
+        try {
+            if (port > 0) {
+                Connection.connect(ip, port, instace);
+                Connection.send("ClientConnected");
+                connectbutton.setEnabled(false);
+
+            }
+        } catch (Throwable e) {
+            connectbutton.setText("Verbinden");
+            setConnected(false);
+            connectbutton.setEnabled(true);
+        }
     }
 
 

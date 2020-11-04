@@ -34,27 +34,15 @@ public class Tetris extends Fragment implements View.OnTouchListener, GestureDet
 
         View view =  inflater.inflate(R.layout.tetris_fragment, container, false);
 
-        Button rechts= view.findViewById(R.id.rechts);
-        Button links= view.findViewById(R.id.links);
-        Button drehen= view.findViewById(R.id.drehen);
-        Button runter= view.findViewById(R.id.runter);
+
+        //Button drehen= view.findViewById(R.id.drehen);
+      //  Button runter= view.findViewById(R.id.runter);
         Button neuesspiel= view.findViewById(R.id.neuesspiel);
         view.setOnTouchListener(this);
 
         mGestureDetector = new GestureDetectorCompat(view.getContext(),this);
-        rechts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Connection.send("r");
-            }
-        });
-        links.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Connection.send("l");
-            }
-        });
-        drehen.setOnClickListener(new View.OnClickListener() {
+
+    /*    drehen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Connection.send("t");
@@ -77,7 +65,7 @@ public class Tetris extends Fragment implements View.OnTouchListener, GestureDet
                 }
                 return false;
             }
-        });
+        });*/
 
         neuesspiel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +106,7 @@ public class Tetris extends Fragment implements View.OnTouchListener, GestureDet
 
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
+        Connection.send("t");
         return false;
     }
 
@@ -133,7 +122,20 @@ public class Tetris extends Fragment implements View.OnTouchListener, GestureDet
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        System.out.println("FINGasdfasdfasdfasdfasdf");
+        if(Math.abs(velocityX)>=Math.abs(velocityY)){
+            if(velocityX>=0){
+                Connection.send("r");
+            }else{
+                Connection.send("l");
+            }
+            System.out.println("Yfling");
+        }else{
+            if(velocityY>=0){
+                Connection.send("d");
+            }else{
+            }
+            System.out.println("Xfling");
+        }
         return false;
     }
 }
