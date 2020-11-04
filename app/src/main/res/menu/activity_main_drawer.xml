@@ -15,12 +15,16 @@
 
         <item
             android:id="@+id/snake"
-            android:icon="@drawable/game"
+            android:icon="@drawable/snake"
             android:title="@string/menu_snake" />
         <item
             android:id="@+id/tetris"
             android:icon="@drawable/game"
             android:title="@string/menu_tetris" />
+        <item
+            android:id="@+id/racinggame"
+            android:icon="@drawable/car"
+            android:title="@string/menu_racinggame" />
 
     </group>
 </menu>
