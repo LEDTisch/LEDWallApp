@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public MainActivity instace = this;
     public static Button connectbutton;
     Toolbar toolbar;
-    public static int brightness = 5;
+    public static int brightness = 50;
     private Snackbar bar;
 
 
@@ -196,8 +196,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
 
-            if (brightness > 0) {
-                brightness--;
+            brightness-=10;
+            if(brightness<0){
+                brightness=0;
             }
             Connection.send("brightness:"+brightness+"#");
 
@@ -212,9 +213,10 @@ public class MainActivity extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
 
 
-            if (brightness < 10) {
-                brightness++;
-            }
+                brightness+=10;
+                if(brightness>100){
+                    brightness=100;
+                }
             Connection.send("brightness:"+brightness+"#");
 
             bar.setText("Helligkeit: " + (brightness));
