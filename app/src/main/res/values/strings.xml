@@ -16,6 +16,8 @@
 
     <string name="menu_racinggame">Racing Game</string>
     <string name="menu_flappybird">Flappy Bird</string>
+    <string name="menu_sokoban">Sokoban</string>
+
 
 
     <string name="menu_snake">Snake</string>

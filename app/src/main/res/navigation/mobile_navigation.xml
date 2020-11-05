@@ -37,5 +37,11 @@
         android:name="de.ft.LEDWallApp.ui.flappybird.FlappyBird"
         android:label="@string/menu_flappybird"
         tools:layout="@layout/flappy_bird_fragment" />
+    <fragment
+        android:id="@+id/sokoban"
+        android:name="de.ft.LEDWallApp.ui.Sokoban.Sokoban"
+        android:label="@string/menu_sokoban"
+        tools:layout="@layout/sokoban_fragment" />
+
 
 </navigation>

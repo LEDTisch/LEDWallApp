@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.licht, R.id.snake, R.id.tetris, R.id.racinggame, R.id.flappybird)
+                R.id.nav_home, R.id.licht, R.id.snake, R.id.tetris, R.id.racinggame, R.id.flappybird, R.id.sokoban)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
