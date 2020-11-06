@@ -11,8 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#4C4C4C"
-        android:backgroundTint="#424242"
+        android:background="@color/backgroundcolor"
+        android:backgroundTint="@color/backgroundcolor"
         android:hapticFeedbackEnabled="true"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"

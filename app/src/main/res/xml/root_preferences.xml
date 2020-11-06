@@ -21,6 +21,15 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="Sync">
+
+        <SwitchPreferenceCompat
+            app:key="dark"
+            app:title="Dark Theme"
+            />
+    </PreferenceCategory>
+
+
     <PreferenceCategory app:title="@string/sync_header">
 
         <SwitchPreferenceCompat
