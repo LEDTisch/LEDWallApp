@@ -2,7 +2,6 @@ package de.ft.LEDWallApp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,9 +10,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -105,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.licht, R.id.snake, R.id.tetris, R.id.racinggame, R.id.flappybird, R.id.sokoban)
+                R.id.nav_home, R.id.licht, R.id.snake, R.id.tetris, R.id.racinggame, R.id.flappybird, R.id.pacman)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

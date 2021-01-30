@@ -30,9 +30,9 @@
             android:icon="@drawable/bird"
             android:title="@string/menu_flappybird" />
         <item
-            android:id="@+id/sokoban"
+            android:id="@+id/pacman"
             android:icon="@drawable/game"
-            android:title="@string/menu_sokoban" />
+            android:title="@string/menu_pacman" />
 
     </group>
 </menu>

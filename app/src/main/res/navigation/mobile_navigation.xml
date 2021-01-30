@@ -38,10 +38,10 @@
         android:label="@string/menu_flappybird"
         tools:layout="@layout/flappy_bird_fragment" />
     <fragment
-        android:id="@+id/sokoban"
-        android:name="de.ft.LEDWallApp.ui.Sokoban.Sokoban"
-        android:label="@string/menu_sokoban"
-        tools:layout="@layout/sokoban_fragment" />
+        android:id="@+id/pacman"
+        android:name="de.ft.LEDWallApp.ui.PacMan.PacMan"
+        android:label="@string/menu_pacman"
+        tools:layout="@layout/pacman_fragment" />
 
 
 </navigation>
