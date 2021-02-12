@@ -3,6 +3,11 @@ package de.ft.LEDWallApp.ui.PacMan;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,12 +19,15 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import de.ft.LEDWallApp.Connection;
+import de.ft.LEDWallApp.MainActivity;
 import de.ft.LEDWallApp.R;
 
-public class PacMan extends Fragment  implements View.OnTouchListener, GestureDetector.OnGestureListener {
-
+public class PacMan extends Fragment  implements View.OnTouchListener, GestureDetector.OnGestureListener, SensorEventListener {
+    private SensorManager senSensorManager;
+    private Sensor senAccelerometer;
     private PacManViewModel mViewModel;
     private GestureDetectorCompat mGestureDetector;
 
@@ -34,6 +42,12 @@ public class PacMan extends Fragment  implements View.OnTouchListener, GestureDe
         view.setOnTouchListener(this);
 
         mGestureDetector = new GestureDetectorCompat(view.getContext(),this);
+
+        senSensorManager = (SensorManager) view.getContext().getSystemService(view.getContext().SENSOR_SERVICE);
+        senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        senSensorManager.registerListener(this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
+
+
         return view;
     }
 
@@ -99,4 +113,18 @@ public class PacMan extends Fragment  implements View.OnTouchListener, GestureDe
         return false;
     }
 
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        float[] values = sensorEvent.values;
+        // Movement
+        float x = values[0];
+        float y = values[1];
+        float z = values[2];
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
 }
